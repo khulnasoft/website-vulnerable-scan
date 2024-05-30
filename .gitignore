@@ -1,17 +1,10 @@
-# Dependency directory
-node_modules
-
-# Rest pulled from https://github.com/github/gitignore/blob/master/Node.gitignore
+.dccache
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
-
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Runtime data
 pids
@@ -24,7 +17,6 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-*.lcov
 
 # nyc test coverage
 .nyc_output
@@ -42,13 +34,11 @@ bower_components
 build/Release
 
 # Dependency directories
+node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
 typings/
-
-# TypeScript cache
-*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -90,14 +80,8 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# OS metadata
-.DS_Store
-Thumbs.db
+package-lock.json
 
-# Ignore built ts files
-__tests__/runner/*
-
-# IDE files
-.idea
+# IDE
 .vscode
-*.code-workspace
+.idea

@@ -1,202 +1,114 @@
-# website vulnerable scan
+<p align="center"><h1 align="center">
+  website-vulnerable-scan
+</h1>
 
-Use this template to bootstrap the creation of a JavaScript action. :rocket:
+<p align="center">
+  finds publicly known security vulnerabilities in a website's frontend JavaScript libraries
+</p>
 
-This template includes compilation support, tests, a validation workflow,
-publishing, and versioning guidance.
+<p align="center">
+  <a href="https://www.npmjs.org/package/website-vulnerable-scan"><img src="https://badgen.net/npm/v/website-vulnerable-scan" alt="npm version"/></a>
+  <a href="https://www.npmjs.org/package/website-vulnerable-scan"><img src="https://badgen.net/npm/license/website-vulnerable-scan" alt="license"/></a>
+  <a href="https://www.npmjs.org/package/website-vulnerable-scan"><img src="https://badgen.net/npm/dt/website-vulnerable-scan" alt="downloads"/></a>
+  <a href="https://github.com/khulnasoft/website-vulnerable-scan/actions?workflow=CI"><img src="https://github.com/khulnasoft/website-vulnerable-scan/workflows/CI/badge.svg" alt="build"/></a>
+  <a href="https://codecov.io/gh/khulnasoft/website-vulnerable-scan"><img src="https://badgen.net/codecov/c/github/khulnasoft/website-vulnerable-scan" alt="codecov"/></a>
+  <a href="https://snyk.io/test/github/khulnasoft/website-vulnerable-scan"><img src="https://snyk.io/test/github/khulnasoft/website-vulnerable-scan/badge.svg" alt="Known Vulnerabilities"/></a>
+  <a href="./SECURITY.md"><img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-yellow.svg" alt="Responsible Disclosure Policy" /></a>
+</p>
 
-If you are new, there's also a simpler introduction in the
-[Hello world JavaScript action repository](https://github.com/actions/hello-world-javascript-action).
+</p>
 
-## Create Your Own Action
 
-To create your own action, you can use this repository as a template! Just
-follow the below instructions:
+# About
 
-1. Click the **Use this template** button at the top of the repository
-1. Select **Create a new repository**
-1. Select an owner and name for your new repository
-1. Click **Create repository**
-1. Clone your new repository
+Finds publicly known security vulnerabilities in a website's frontend JavaScript libraries.
 
-> [!IMPORTANT]
->
-> Make sure to remove or update the [`CODEOWNERS`](./CODEOWNERS) file! For
-> details on how to use this file, see
-> [About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
+# Usage
 
-## Initial Setup
+## Command line
 
-After you've cloned the repository to your local machine or codespace, you'll
-need to perform some initial setup steps before you can develop your action.
+Using Node.js's `npx` to run a one-off scan of a website:
 
-> [!NOTE]
->
-> You'll need to have a reasonably modern version of
-> [Node.js](https://nodejs.org) handy. If you are using a version manager like
-> [`nodenv`](https://github.com/nodenv/nodenv) or
-> [`nvm`](https://github.com/nvm-sh/nvm), you can run `nodenv install` in the
-> root of your repository to install the version specified in
-> [`package.json`](./package.json). Otherwise, 20.x or later should work!
-
-1. :hammer_and_wrench: Install the dependencies
-
-   ```bash
-   npm install
-   ```
-
-1. :building_construction: Package the JavaScript for distribution
-
-   ```bash
-   npm run bundle
-   ```
-
-1. :white_check_mark: Run the tests
-
-   ```bash
-   $ npm test
-
-   PASS  ./index.test.js
-     ✓ throws invalid number (3ms)
-     ✓ wait 500 ms (504ms)
-     ✓ test runs (95ms)
-
-   ...
-   ```
-
-## Update the Action Metadata
-
-The [`action.yml`](action.yml) file defines metadata about your action, such as
-input(s) and output(s). For details about this file, see
-[Metadata syntax for GitHub Actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions).
-
-When you copy this repository, update `action.yml` with the name, description,
-inputs, and outputs for your action.
-
-## Update the Action Code
-
-The [`src/`](./src/) directory is the heart of your action! This contains the
-source code that will be run when your action is invoked. You can replace the
-contents of this directory with your own code.
-
-There are a few things to keep in mind when writing your action code:
-
-- Most GitHub Actions toolkit and CI/CD operations are processed asynchronously.
-  In `main.js`, you will see that the action is run in an `async` function.
-
-  ```javascript
-  const core = require('@actions/core')
-  //...
-
-  async function run() {
-    try {
-      //...
-    } catch (error) {
-      core.setFailed(error.message)
-    }
-  }
-  ```
-
-  For more information about the GitHub Actions toolkit, see the
-  [documentation](https://github.com/actions/toolkit/blob/master/README.md).
-
-So, what are you waiting for? Go ahead and start customizing your action!
-
-1. Create a new branch
-
-   ```bash
-   git checkout -b releases/v1
-   ```
-
-1. Replace the contents of `src/` with your action code
-1. Add tests to `__tests__/` for your source code
-1. Format, test, and build the action
-
-   ```bash
-   npm run all
-   ```
-
-   > [!WARNING]
-   >
-   > This step is important! It will run [`ncc`](https://github.com/vercel/ncc)
-   > to build the final JavaScript action code with all dependencies included.
-   > If you do not run this step, your action will not work correctly when it is
-   > used in a workflow. This step also includes the `--license` option for
-   > `ncc`, which will create a license file for all of the production node
-   > modules used in your project.
-
-1. Commit your changes
-
-   ```bash
-   git add .
-   git commit -m "My first action is ready!"
-   ```
-
-1. Push them to your repository
-
-   ```bash
-   git push -u origin releases/v1
-   ```
-
-1. Create a pull request and get feedback on your action
-1. Merge the pull request into the `main` branch
-
-Your action is now published! :rocket:
-
-For information about versioning your action, see
-[Versioning](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-in the GitHub Actions toolkit.
-
-## Validate the Action
-
-You can now validate the action by referencing it in a workflow file. For
-example, [`ci.yml`](./.github/workflows/ci.yml) demonstrates how to reference an
-action in the same repository.
-
-```yaml
-steps:
-  - name: Checkout
-    id: checkout
-    uses: actions/checkout@v3
-
-  - name: Test Local Action
-    id: test-action
-    uses: ./
-    with:
-      milliseconds: 1000
-
-  - name: Print Output
-    id: output
-    run: echo "${{ steps.test-action.outputs.time }}"
+```bash
+npx website-vulnerable-scan https://example.com [--json] [--js-lib] [--mobile|--desktop] [--chromePath] [--cookie] [--token]
 ```
 
-For example workflow runs, check out the
-[Actions tab](https://github.com/khulnasoft/website-vulnerable-scan/actions)! :rocket:
+The CLI will gracefully handle cases where the URL to scan is missing by prompting you to enter it:
 
-## Usage
+```bash
+$ npx website-vulnerable-scan
+Woops! You forgot to provide a URL of a website to scan.
+? Please provide a URL to scan: › https://example.com
+...
+```
 
-After testing, you can create version tag(s) that developers can use to
-reference different stable versions of your action. For more information, see
-[Versioning](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-in the GitHub Actions toolkit.
+### Exit codes
 
-To include the action in a workflow in another repository, you can use the
-`uses` syntax with the `@` symbol to reference a specific branch, tag, or commit
-hash.
+If the CLI detects an error, it will terminate with an exit code different from 0.
+
+Exit Code 0: Everything is fine. No vulnerabilities found.
+
+Exit Code 1: An error happened during the execution. Check the logs for details.
+
+Exit Code 2: Vulnerabilities were found. Check the logs for details.
+
+## Docker
+
+To build and run the container locally:
+
+```bash
+# Clone Repo:
+git clone https://github.com/khulnasoft/website-vulnerable-scan.git
+
+# Change to repo's cloned directory:
+cd website-vulnerable-scan
+
+# Build Image locally:
+docker build --no-cache -t khulnasoft/website-vulnerable-scan:latest .
+
+# Run container:
+docker run --rm -e SCAN_URL="https://www.google.com/" khulnasoft/website-vulnerable-scan:latest
+```
+
+`SCAN_URL` is an environment variable and its value must be replaced with the desired URL during Docker run. Docker container will exit once the scan has been completed.
+
+If you wish to provide command line arguments to `website-vulnerable-scan` and customize the run, such as providing `--json` or other supported arguments, you should omit the environment variable and provide the full command. Here is an example:
+
+```
+docker run --rm khulnasoft/website-vulnerable-scan:latest https://www.google.com --json
+```
+
+:warning: A modern version of Chrome is assumed to be available when using `website-vulnerable-scan`. It may not be safe to assume that this is satisfied automatically on some CI services. For example, [additional configuration](https://docs.travis-ci.com/user/chrome#selecting-a-chrome-version) is necessary for [Travis CI](https://travis-ci.com/).
+
+# GitHub Action
+Create .github/workflows/website-vulnerable-scan.yml with the url that you want scanned:
 
 ```yaml
-steps:
-  - name: Checkout
-    id: checkout
-    uses: actions/checkout@v4
+name: Test site for publicly known js vulnerabilities
 
-  - name: Run my Action
-    id: run-action
-    uses: khulnasoft/website-vulnerable-scan@v1 # Commit with the `v1` tag
-    with:
-      milliseconds: 1000
-
-  - name: Print Output
-    id: output
-    run: echo "${{ steps.run-action.outputs.time }}"
+on: push
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test for public javascript library vulnerabilities 
+        uses: khulnasoft/website-vulnerable-scan@main
+        with:
+          scan-url: "https://yoursite.com"
 ```
+
+# Install
+
+You can install globally via:
+
+```bash
+npm install -g website-vulnerable-scan
+```
+
+# Contributing
+
+Please consult [CONTRIBUTING](./CONTRIBUTING.md) for guidelines on contributing to this project.
+
+# Author
+
+**website-vulnerable-scan** © [KhulnaSoft DevSec](https://github.com/khulnasoft), Released under the [Apache-2.0](./LICENSE) License.
