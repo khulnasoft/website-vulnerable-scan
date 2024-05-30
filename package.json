@@ -20,9 +20,6 @@
     "Actions",
     "JavaScript"
   ],
-  "exports": {
-    ".": "./dist/index.js"
-  },
   "engines": {
     "node": ">=20"
   },
@@ -48,11 +45,14 @@
     "yargs": "16.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^29.7.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-preset-env": "^0.0.0",
