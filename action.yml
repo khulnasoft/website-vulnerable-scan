@@ -1,19 +1,14 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
-
-# Define your inputs here.
+name: 'Website Vulnerable Scan'
+description: 'Scans a URL for publicly known vulnerabilities'
+branding:
+  icon: 'alert-circle'  
+  color: 'purple'
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  scan-url:
+    description: 'Website URL to scan'
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
-
 runs:
-  using: node20
-  main: dist/index.js
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    SCAN_URL: ${{ inputs.scan-url }}
